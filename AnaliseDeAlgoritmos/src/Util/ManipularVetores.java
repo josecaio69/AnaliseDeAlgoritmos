@@ -6,7 +6,7 @@ public class ManipularVetores {
 	public void printDoVetor(int[] vetor) {
 		for (int i = 0; i < vetor.length; i++)
 			System.out.print(vetor[i] + " - ");
-
+		System.out.println("\n");
 	}
 
 	public void embaralharVetor(int[] vetor) {
@@ -36,6 +36,15 @@ public class ManipularVetores {
 			tamanho--;
 			cont++;
 		}
+	}
+
+	public int[] criarEPreencherUmVetor(int tamanhoMaximoDoVetor) {
+		Random random = new Random();
+		int vetor[] = new int[tamanhoMaximoDoVetor];
+		for (int i = 0; i < vetor.length; i++)
+			vetor[i] = random.nextInt(tamanhoMaximoDoVetor*2);
+
+		return vetor;
 	}
 
 }

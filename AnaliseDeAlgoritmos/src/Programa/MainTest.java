@@ -5,47 +5,27 @@ import Insertion.InsertionSort;
 import Intercalation.MergeSort;
 import Replacement.BubbleSort;
 import Selection.SelectionSort;
-import Util.ManipularVetores;
 
 public class MainTest {
 
 	public static void main(String[] args) {
 
-		int[] vetor = { 2,25, 22, 12, 15, 3, 7, 1,5 };
-		BubbleSort b = new BubbleSort();
-		SelectionSort selecao = new SelectionSort();
+		BubbleSort bubble = new BubbleSort();
+		SelectionSort selection = new SelectionSort();
 		QuickSort quick = new QuickSort();
 		InsertionSort insert = new InsertionSort();
-		ManipularVetores imprimir = new ManipularVetores();
 		MergeSort merge = new MergeSort();
-//		b.bolha(vetor);
-//		System.out.println("Ordenação pelo BubbleSort");
-//		for (int i = 0; i < vetor.length; i++) 
-//			System.out.println(vetor[i]);
-			
 		
-//		selecao.selection(vetor);
-//		System.out.println("Ordenação pelo Selection Sort");
-//		for (int i = 0; i < vetor.length; i++) {
-//			System.out.println(vetor[i]);
-//		}
+		//selection.usandoSelectionParaExemplos(100000);
 		
-//		quick.quickSort(vetor, 0,vetor.length-1);
-//		System.out.println("Ordenação pelo QuickSort");
-//		for (int i = 0; i < vetor.length; i++) {
-//			System.out.println(vetor[i]);
-//		}
-//		System.out.print("Ordenado");
-//		insert.insertion(vetor);
-//		imprimir.printDoVetor(vetor);
-//		
-//		System.out.println("Invertido");
-//		imprimir.inverterVetor(vetor);
-//		imprimir.printDoVetor(vetor);
+		//bubble.usandoBolhaParaExemplos(100000);
 		
-		merge.mergeSortUsandoRecursividade(0, vetor.length, vetor);
-		imprimir.printDoVetor(vetor);
-	
+		//merge.usandoMergeParaExemplos(100000);
+		
+		//insert.usandoInsertionParaExemplos(100000);
+		
+		//selection.usandoSelectionParaExemplos(100000);
+
 	}
 
 }
