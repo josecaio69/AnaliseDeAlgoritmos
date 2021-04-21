@@ -4,11 +4,12 @@ import Util.VariaveisEmComumParaUso;
 
 public class SelectionSort extends VariaveisEmComumParaUso{
 
-	private void selection(int[] vetor) {
+	public void selection(int[] vetor) {
 
 		for (int i = 0; i < vetor.length - 1; i++) {
 			int indiceDoMenor = i;
 			for (int j = i + 1; j < vetor.length; j++) {
+				super.setQuantidadeDeComparacoes(super.getQuantidadeDeComparacoes()+1);
 				if (vetor[j] < vetor[indiceDoMenor]) {
 					indiceDoMenor = j;
 				}
@@ -16,13 +17,14 @@ public class SelectionSort extends VariaveisEmComumParaUso{
 			int troca = vetor[indiceDoMenor];
 			vetor[indiceDoMenor] = vetor[i];
 			vetor[i] = troca;
+			super.setQuantidadeDeTrocas(super.getQuantidadeDeTrocas()+1);
 		}
 
 	}
 	
 	public void usandoSelectionParaExemplos(int tamanhoDoVetorQueSeraManipulado) {
 		/* Criando vetor do tamanho desejado */
-		super.setVetor((getManipulacaoDeVetor().criarEPreencherUmVetor(tamanhoDoVetorQueSeraManipulado)));
+		super.setVetor((getManipulacaoDeVetor().criarVetorAleatorio(tamanhoDoVetorQueSeraManipulado)));
 		System.out.println("Selection sort com vetor tamanho " + tamanhoDoVetorQueSeraManipulado);
 		/* Cauculando tempo de inicio */
 		super.setTempoInicial(System.currentTimeMillis());
@@ -35,6 +37,6 @@ public class SelectionSort extends VariaveisEmComumParaUso{
 		 * Tempo total gasto end-start/1000 para converter de milissegundos para
 		 * segundos
 		 */
-		System.out.println("Tempo Gasto Total Arredondado: " + ((super.getTempoFinal() - super.getTempoInicial()) / 1000) + " Segundos.");
+		System.out.println("Tempo Gasto Total Arredondado: " + ((super.getTempoFinal() - super.getTempoInicial()) / 1000d) + " Segundos.");
 	}
 }

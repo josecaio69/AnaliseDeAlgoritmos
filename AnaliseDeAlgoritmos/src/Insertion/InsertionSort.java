@@ -2,27 +2,38 @@ package Insertion;
 
 import Util.VariaveisEmComumParaUso;
 
-public class InsertionSort extends VariaveisEmComumParaUso{
+public class InsertionSort extends VariaveisEmComumParaUso {
 	/*
-	 * @author José Caio
-	 * Algoritmo de ordenação Insertion sorte
+	 * @author José Caio Algoritmo de ordenação Insertion sort
 	 */
 
-	private void insertion(int[] vetor) {
-		for (int i = 1; i < vetor.length; ++i) {
-			int key = vetor[i];
+	public void insertion(int[] vetor) {
+		super.setTempoInicial(System.currentTimeMillis());
+		int n = vetor.length;
+		for (int i = 1; i < n; ++i) {
+			int chave = vetor[i];
 			int j = i - 1;
-			while (j >= 0 && vetor[j] > key) {
+
+			/*
+			 * Move elements of arr[0..i-1], that are greater than key, to one position
+			 * ahead of their current position
+			 */
+			while (j >= 0 && vetor[j] > chave) {
+				super.setQuantidadeDeComparacoes(super.getQuantidadeDeComparacoes() + 1);
 				vetor[j + 1] = vetor[j];
 				j = j - 1;
+				super.setQuantidadeDeTrocas(super.getQuantidadeDeTrocas() + 1);
 			}
-			vetor[j + 1] = key;
+			super.setQuantidadeDeComparacoes(super.getQuantidadeDeComparacoes() + 1);
+			if (vetor[j + 1] != chave)
+				vetor[j + 1] = chave;
 		}
+		super.setTempoFinal(System.currentTimeMillis());
 	}
-	
+
 	public void usandoInsertionParaExemplos(int tamanhoDoVetorQueSeraManipulado) {
 		/* Criando vetor do tamanho desejado */
-		super.setVetor(super.getManipulacaoDeVetor().criarEPreencherUmVetor(tamanhoDoVetorQueSeraManipulado));
+		super.setVetor(super.getManipulacaoDeVetor().criarVetorAleatorio(tamanhoDoVetorQueSeraManipulado));
 		System.out.println("Insertion sort com vetor tamanho " + tamanhoDoVetorQueSeraManipulado);
 		/* Cauculando tempo de inicio */
 		super.setTempoInicial(System.currentTimeMillis());
@@ -35,7 +46,8 @@ public class InsertionSort extends VariaveisEmComumParaUso{
 		 * Tempo total gasto end-start/1000 para converter de milissegundos para
 		 * segundos
 		 */
-		System.out.println("Tempo Gasto Total Arredondado: " + ((super.getTempoFinal() - super.getTempoInicial()) / 1000) + " Segundos.");
+		System.out.println("Tempo Gasto Total Arredondado: "
+				+ ((super.getTempoFinal() - super.getTempoInicial()) / 1000d) + " Segundos.");
 
 	}
 

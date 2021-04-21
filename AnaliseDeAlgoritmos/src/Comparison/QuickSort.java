@@ -12,11 +12,11 @@ public class QuickSort extends VariaveisEmComumParaUso{
 	 * vetor -1
 	 */
 
-	private void quickSort(int vetor[], int inicio, int fim) {
+	public void quickSort(int vetor[], int inicio, int fim) {
 		int ponteiroEsquerdo = inicio;
 		int ponteiroDireito = fim;
 		int pivo = vetor[(ponteiroEsquerdo + ponteiroDireito) / 2];
-		int troca;
+		int troca = 0;
 		/*
 		 * Usamos os ponteiros para fazer comparação com nosso elemento mais central
 		 * (PIVO) incrementamos o pivo esquerdo e diminuimos o direito, fazendo as
@@ -25,20 +25,29 @@ public class QuickSort extends VariaveisEmComumParaUso{
 		 */
 
 		while (ponteiroEsquerdo <= ponteiroDireito) {
-			while (vetor[ponteiroEsquerdo] < pivo)
+			while (vetor[ponteiroEsquerdo] < pivo) {
 				ponteiroEsquerdo++;
+				super.setQuantidadeDeComparacoes(super.getQuantidadeDeComparacoes()+1);
+				
+			}
 
-			while (vetor[ponteiroDireito] > pivo)
+			while (vetor[ponteiroDireito] > pivo) {
 				ponteiroDireito--;
-
+				super.setQuantidadeDeComparacoes(super.getQuantidadeDeComparacoes()+1);
+				
+			}
+				
+			
 			if (ponteiroEsquerdo <= ponteiroDireito) {
 				troca = vetor[ponteiroEsquerdo];
 				vetor[ponteiroEsquerdo] = vetor[ponteiroDireito];
 				vetor[ponteiroDireito] = troca;
 				ponteiroEsquerdo++;
 				ponteiroDireito--;
+				super.setQuantidadeDeTrocas(super.getQuantidadeDeTrocas()+1);
 			}
 		}
+		
 
 		/*
 		 * Após os ponteiros se cruzarem, saimos de dentro do laço e testanmos os
@@ -60,13 +69,16 @@ public class QuickSort extends VariaveisEmComumParaUso{
 		 */
 		if (ponteiroEsquerdo < fim)
 			quickSort(vetor, ponteiroEsquerdo, fim);
+		
 
 	}
 	
-	public void usandoQuickSortParaExemplos(int tamanhoDoVetorQueSeraManipulado) {
+	public void usandoQuickSortParaExemplos(int [] vetorParaSerOrdenado) {
+		super.setQuantidadeDeTrocas(0);
+		super.setQuantidadeDeComparacoes(0);
 		/* Criando vetor do tamanho desejado */
-		super.setVetor(super.getManipulacaoDeVetor().criarEPreencherUmVetor(tamanhoDoVetorQueSeraManipulado));
-		System.out.println("Quick sort com vetor tamanho " + tamanhoDoVetorQueSeraManipulado);
+		super.setVetor(vetorParaSerOrdenado);
+		System.out.println("Quick sort com vetor contendo " + (vetorParaSerOrdenado.length)+" elementos.");
 		/* Cauculando tempo de inicio */
 		super.setTempoInicial(System.currentTimeMillis());
 		System.out.println("Tempo Inicial: " + super.getTempoInicial() + " Milissegundos.");
@@ -78,7 +90,9 @@ public class QuickSort extends VariaveisEmComumParaUso{
 		 * Tempo total gasto end-start/1000 para converter de milissegundos para
 		 * segundos
 		 */
-		System.out.println("Tempo Gasto Total Arredondado: " + ((super.getTempoFinal() - super.getTempoInicial()) / 1000) + " Segundos.");
+		System.out.println("Tempo Gasto Total Arredondado: " + ((super.getTempoFinal() - super.getTempoInicial()) / 1000d) + " Segundos.");
+		System.out.println("Quantidade de comparações: "+super.getQuantidadeDeComparacoes());
+		System.out.println("Quantidade de trocas: "+super.getQuantidadeDeTrocas());
 
 	}
 
